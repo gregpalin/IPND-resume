@@ -13,6 +13,7 @@ var bio = {
 	"display" : function(){
 		$("#header").prepend(HTMLheaderRole.replace("%data%", bio.role)).prepend(HTMLheaderName.replace("%data%",bio.name));
 		$("#topContacts").append(HTMLmobile.replace("%data%", bio.contacts.mobile)).append(HTMLemail.replace("%data%", bio.contacts.email)).append(HTMLgithub.replace("%data%", bio.contacts.github)).append(HTMLlocation.replace("%data%", bio.contacts.location));
+		$("#footerContacts").append(HTMLmobile.replace("%data%", bio.contacts.mobile)).append(HTMLemail.replace("%data%", bio.contacts.email)).append(HTMLgithub.replace("%data%", bio.contacts.github)).append(HTMLlocation.replace("%data%", bio.contacts.location));
 		$("#header").append(HTMLbioPic.replace("%data%", bio.biopic)).append(HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage));
 		if(bio.skills.length != 0){
 			$("#header").append(HTMLskillsStart);
@@ -39,7 +40,7 @@ var education = {
 		"title" : "Introduction to Programming Nanodegree",
 		"school" : "Udacity, Inc.",
 		"date" : "February 2016 - May 2016",
-		"url" : "https://www.udacity.com/"
+		"url" : "https://www.udacity.com/course/intro-to-programming-nanodegree--nd000"
 	}],
 	"display" : function(){
 		var i = 0;
@@ -61,9 +62,10 @@ var education = {
 		}
 		while(i < education.onlineCourses.length){
 			var formattedOEduTitle = HTMLonlineTitle.replace("#", education.onlineCourses[i].url).replace("%data%", education.onlineCourses[i].title);
-			var formattedOEduSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[i].school); 
+			var formattedOEduSchool = formattedOEduTitle + HTMLonlineSchool.replace("%data%", education.onlineCourses[i].school); 
 			var formattedOEduDate = HTMLonlineDates.replace("%data%", education.onlineCourses[i].date);
-			$(".education-entry:last").append(formattedOEduTitle, formattedOEduSchool, formattedOEduDate);
+			var formattedOUrl = HTMLonlineURL.replace("#", education.onlineCourses[i].url).replace("%data%", "Read about the Introduction to Programming Nanodegree!");
+			$(".education-entry:last").append(formattedOEduSchool, formattedOEduDate, formattedOUrl);
 			i += 1;
 		}
 	}
@@ -107,17 +109,17 @@ var projects = {
 		"title" : "Unit One Notes",
 		"dates" : "February 8, 2016 - February 11, 2016",
 		"description" : "A simple website using HTML and CSS to display notes from a course I took.",
-		"images" : "images/notes_screenshot_one.JPG"
+		"images" : ["images/notes_screenshot_one.JPG"]
 	},{
 		"title" : "Programming Quiz",
 		"dates" : "February 17, 2016 - February 21, 2016",
 		"description" : "Designed a program using Python to test users knowledge of Python.",
-		"images" : "images/quiz_screenshot_one.JPG"
+		"images" : ["images/quiz_screenshot_one.JPG"]
 	},{
 		"title" : "Movie Website",
 		"dates" : "March 13, 2016 - March 16, 2016",
 		"description" : "Made a website python that displays trailers for various movies that I enjoy.",
-		"images" : "images/movie_screenshot_one.JPG"
+		"images" : ["images/movie_screenshot_one.JPG"]
 	}],
 	"display" : function(){
 		if(projects.projects.length != 0){
@@ -128,7 +130,7 @@ var projects = {
 			var formattedTitle = HTMLprojectTitle.replace("%data%", projects.projects[i].title);
 			var formattedDates = HTMLprojectDates.replace("%data%", projects.projects[i].dates);
 			var formattedDescription = HTMLprojectDescription.replace("%data%", projects.projects[i].description);
-			var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[i].images);
+			var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[i].images[0]);
 			$(".project-entry").append(formattedTitle, formattedDates, formattedDescription, formattedImage);
 			console.log(formattedDescription);
 			i += 1;
@@ -136,3 +138,6 @@ var projects = {
 	}
 }
 projects.display();
+
+$("#mapDiv").append(googleMap);
+

@@ -212,3 +212,20 @@ span {
     display: block;
   }
 }
+
+#projects{
+	background-image: url("../images/code.jpg");
+}
+#education{
+	background-image: url("../images/college.jpg");
+	background-position: center;
+	background-size: 75%;
+}
+#mapDiv{
+	background-image: url("../images/earth.jpg");
+	background-position: center;
+	background-size: 75%;
+}
+#workExperience{
+	background-image: url("../images/work.jpg");
+}
